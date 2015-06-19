@@ -1,0 +1,7 @@
+{
+  "version": "2",
+  "build_cookbook": {
+    "name": "py-truck",
+    "git": "https://github.com/lnxchk/py-truck.git"
+  }
+}
