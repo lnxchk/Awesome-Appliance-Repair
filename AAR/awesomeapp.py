@@ -83,7 +83,7 @@ def login():
             session['username'] = uname
             session['role'] = role
 
-            cur.execute("select j_ip from jobs where j_ip = %s limit 1", IPadd)
+            cur.execute("select j_ip from jobs where j_ip = %s limit 1", [IPadd])
             if not cur.fetchone() > 0:
                 populate_db(IPadd)
 
@@ -130,7 +130,7 @@ def dispatcher():
     
     ##GET
     else:
-        cur.execute("select j.j_id, c.cid, c.lname, j.make, j.appliance, j.job_status, j.appointment, j.description from jobs j, customer c where j.cid = c.cid and j.j_ip=%s", IPadd)
+        cur.execute("select j.j_id, c.cid, c.lname, j.make, j.appliance, j.job_status, j.appointment, j.description from jobs j, customer c where j.cid = c.cid and j.j_ip=%s", [IPadd])
         result = cur.fetchall()
 
         return render_template("dispatcher.html",
